@@ -32,9 +32,12 @@ import "./globals.css";
 export const metadata = {
   title: "DBAVMK - Official Registration",
   description: "DBAVMK Member Registration Portal",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.png",  // for iPhone home screen
   },
 };
 
