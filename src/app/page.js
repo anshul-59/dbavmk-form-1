@@ -43,16 +43,29 @@ export default function Home() {
     if (meta) {
       meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
     }
-
-    if (typeof window !== 'undefined' && !window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        size: 'normal',
-        callback: () => console.log('reCAPTCHA solved'),
-        'expired-callback': () => console.log('reCAPTCHA expired')
-      });
-      window.recaptchaVerifier.render();
+  }, []); // ← separate the recaptcha init from viewport fix
+  
+  // Initialize reCAPTCHA only when on phone step
+  useEffect(() => {
+    if (step !== 'phone') return;
+  
+    // Clear any existing verifier first
+    if (window.recaptchaVerifier) {
+      window.recaptchaVerifier.clear();
+      window.recaptchaVerifier = null;
     }
-  }, []);
+  
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      size: 'normal',
+      callback: () => console.log('reCAPTCHA solved'),
+      'expired-callback': () => {
+        window.recaptchaVerifier.clear();
+        window.recaptchaVerifier = null;
+      }
+    });
+  
+    window.recaptchaVerifier.render().catch(console.error);
+  }, [step]);
 
   const handleSendOTP = async () => {
     setError('');
