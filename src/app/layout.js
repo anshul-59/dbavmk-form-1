@@ -44,7 +44,7 @@ export const metadata = {
     siteName: "DBAVMK Registration",
     images: [
       {
-        url: "https://dbavmk-form-1.vercel.app/favicon.ico",
+        url: "https://dbavmk-form-1.vercel.app/og-image.png",
         width: 256,
         height: 256,
         alt: "DBAVMK Logo",
