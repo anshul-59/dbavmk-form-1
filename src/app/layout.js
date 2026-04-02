@@ -40,11 +40,11 @@ export const metadata = {
   openGraph: {
     title: "DBAVMK - Official Registration",
     description: "DBAVMK Member Registration Portal",
-    url: "https://dbavmk-form-1.vercel.app",
+    url: "https://dbavmk-registration-form.vercel.app",
     siteName: "DBAVMK Registration",
     images: [
       {
-        url: "https://dbavmk-form-1.vercel.app/og-image.png",
+        url: "https://dbavmk-registration-form.vercel.app/og-image.png",
         width: 256,
         height: 256,
         alt: "DBAVMK Logo",
